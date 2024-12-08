@@ -128,7 +128,11 @@
 
                     <div id="cartPopup"
                         class="hidden absolute left-0 top-full z-10 mt-3 p-4 w-screen max-w-[20rem] lg:max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                        <h3 class="font-bold text-lg mb-4">سبد خرید</h3>
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-[16px] font-semibold text-[#4F2C19]">سبد خرید</h3>
+                            <button id="cartPopupCloseButton"
+                                class="lg:hidden text-gray-500 hover:text-gray-700 w-[50px]">&times;</button>
+                        </div>
                         <div class="p-4" id="cartPopupContainer"></div>
                     </div>
                 </div>
@@ -510,7 +514,7 @@
         class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-[1521]">
         <div class="bg-white rounded-lg shadow-lg max-w-[20rem] lg:max-w-sm w-full">
             <div class="flex justify-between items-center px-2 py-4 bg-[#F6F5F0] rounded-t-lg">
-                <h3 class="text-پی font-semibold text-[#4F2C19]">محصول به سبد خرید اضافه شد</h3>
+                <h3 class="text-[16px] font-semibold text-[#4F2C19]">محصول به سبد خرید اضافه شد</h3>
                 <button id="popupCloseButton" class="text-gray-500 hover:text-gray-700 mx-4">&times;</button>
             </div>
             <div id="popupBody" class="flex items-center gap-4 p-6"></div>

@@ -11,11 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ‌Button For Open Cart Box
     const cartPopupButton = document.querySelector('#cartPopupButton');
+    const cartPopupCloseButton = document.querySelector('#cartPopupCloseButton');
     const cartPopup = document.querySelector('#cartPopup');
     let isHoveringOverPopup = false;
-    
+
     cartPopupButton.addEventListener('click', () => {
-        cartPopup.classList.toggle('hidden');
+        cartPopup.classList.remove('hidden');
+        renderCartItems();
     });
 
     cartPopupButton.addEventListener('mouseenter', () => {
@@ -33,6 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     cartPopup.addEventListener('mouseleave', () => {
+        isHoveringOverPopup = false;
+        hidePopupWithDelay();
+    });
+
+    cartPopupCloseButton.addEventListener('click', () => {
         isHoveringOverPopup = false;
         hidePopupWithDelay();
     });
