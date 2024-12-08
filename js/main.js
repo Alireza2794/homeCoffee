@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartPopupButton = document.querySelector('#cartPopupButton');
     const cartPopup = document.querySelector('#cartPopup');
     let isHoveringOverPopup = false;
+    
+    cartPopupButton.addEventListener('click', () => {
+        cartPopup.classList.toggle('hidden');
+    });
+
     cartPopupButton.addEventListener('mouseenter', () => {
         cartPopup.classList.remove('hidden');
         renderCartItems();
@@ -106,7 +111,7 @@ function renderProductItems() {
 
 
         Item.innerHTML = `
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center justify-between h-[326px] lg:h-fit">
     
                  <!-- image box -->
                 <div class="productImage relative">
@@ -162,7 +167,7 @@ function renderProductItems() {
             }
 
             DiscountItem.innerHTML = `
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center justify-between h-[326px] lg:h-fit">
         
                      <!-- image box -->
                     <div class="productImage relative">
@@ -350,7 +355,7 @@ function removeCartItem(id) {
         updateCartUI();// update cart button
         renderProductItems();
         renderCartItems();// update popup
-        
+
     } else {
         showToast(`محصول با این آیدی پیدا نشد:${id}`, "warning", 5000);
     }
