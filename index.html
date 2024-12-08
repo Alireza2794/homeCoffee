@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title Tag  -->
+    <title>خانه قهوه</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Eshop StyleSheet -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="font/iranSans/iransans.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/toast.css">
+
+
+    <!-- script section -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- script section -->
+</head>
+
+<body style="direction: rtl; font-family: IRANSans !important;" class="!bg-[#F6F5F0]">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+
+
+    <!-- Header -->
+    <header>
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <!-- Menu Button in Mobile Size -->
+            <div class="flex lg:hidden">
+                <button type="button" id="sideMenuButton"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true" data-slot="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+
+
+            <!-- Logo Box -->
+            <div class="flex lg:w-[170px]">
+                <a href="#" class="-m-1.5 p-1.5">
+                    <span class="sr-only">خانه قهوه</span>
+                    <img class="h-8 w-auto" src="images/logo.png" alt="خانه قهوه">
+                </a>
+            </div>
+
+
+            <!-- Menu Items in Desktop -->
+            <div class="hidden lg:flex lg:gap-x-12">
+                <div class="relative">
+                    <button type="button" id="ProductButtonHeader"
+                        class="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
+                        محصولات
+                        <svg class="size-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor"
+                            aria-hidden="true" data-slot="icon">
+                            <path fill-rule="evenodd"
+                                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <div id="ProductHeaderMenu"
+                        class="hidden absolute -left-[20rem] top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                        <div class="p-4" id="menuHeaderContainer"></div>
+                    </div>
+
+                </div>
+
+                <a href="#" class="text-sm/6 font-semibold text-gray-900">درباره ما</a>
+                <a href="#" class="text-sm/6 font-semibold text-gray-900">تماس با ما</a>
+            </div>
+
+            <!-- Cart Button / Login or Register Button / Search Button -->
+            <div class="lg:flex lg:flex-1 lg:justify-end">
+                <!-- Search Button -->
+                <div
+                    class="hidden lg:flex w-[42px] h-[42px] rounded-full border border-gray-400 items-center justify-center cursor-pointer">
+                    <img src="images/Icon.png" alt="جستجو" class="w-[20px] h-[20px]">
+                </div>
+                <!-- End Search Button -->
+
+
+                <!-- Login or Register Button -->
+                <div
+                    class="hidden lg:flex w-[156px] h-[42px] rounded-full border border-gray-400 items-center justify-center cursor-pointer mx-4">
+                    <img src="images/user-icon.png" alt="ورود / ثبت نام" class="w-[20px] h-[20px]">
+                    <p class="!mb-0 !mx-2 font-bold text-[14px]">ورود / ثبت نام</p>
+                </div>
+                <!-- Login or Register Button -->
+
+                <!-- Cart Button -->
+                <div class="relative" id="cartPopupButton">
+                    <button class="relative">
+                        <div
+                            class="bg-[#fff] w-[20px] h-[20px] rounded-full shadow-lg flex items-center justify-center absolute left-[2px] lg:left-[12px] top-[-12px] lg:top-[-5px]">
+                            <p class="!mb-0 font-semibold text-[14px] text-[#B0A27B]" id="totalCountProduct"></p>
+                        </div>
+                        <div
+                            class="lg:w-[120px] lg:h-[42px] rounded-full lg:bg-[#B0A27B] flex items-center justify-center cursor-pointer mx-4">
+                            <img src="images/cart-icon.png" alt="سبد خرید" class="hidden lg:block w-[20px] h-[20px]">
+                            <img src="images/Icon-cart-black.png" alt="سبد خرید"
+                                class="block lg:hidden  w-[20px] h-[20px]">
+                            <p class="hidden lg:block !mb-0 !mx-2 font-bold text-[10px] text-[#fff]"
+                                id="totalCountPrice">
+                            </p>
+                        </div>
+                    </button>
+
+
+                    <div id="cartPopup"
+                        class="hidden absolute left-0 top-full z-10 mt-3 p-4 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                        <h3 class="font-bold text-lg mb-4">سبد خرید</h3>
+                        <div class="p-4" id="cartPopupContainer"></div>
+                    </div>
+                </div>
+                <!-- Cart Button -->
+            </div>
+        </nav>
+
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <div class="hidden" id="sideMenuMenu">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-10"></div>
+            <div
+                class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+
+                <!-- Heder in side menu -->
+                <div class="flex items-center justify-between">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">خانه قهوه</span>
+                        <img class="h-8 w-auto" src="images/logo.png" alt="خانه قهوه">
+                    </a>
+                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" id="sideMenuCloseButton">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true" data-slot="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- body side menu -->
+                <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+
+                            <!-- Product -->
+                            <div class="-mx-3">
+                                <button type="button" id="ProductButtonSide"
+                                    class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    محصولات
+                                    <svg class="size-5 flex-none" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd"
+                                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="hidden mt-2 space-y-2" id="ProductSideMenu">
+                                    <div id="ProductSideContainer"></div>
+                                </div>
+                            </div>
+                            <!-- Product -->
+                            <a href="#"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">درباره
+                                ما</a>
+                            <a href="#"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">تماس
+                                با ما</a>
+                        </div>
+                        <div class="py-6">
+                            <!-- Login or Register Button -->
+                            <div
+                                class="h-[42px] rounded-full border border-gray-400 flex items-center justify-center cursor-pointer mx-4">
+                                <img src="images/user-icon.png" alt="ورود / ثبت نام" class="w-[20px] h-[20px]">
+                                <p class="!mb-0 !mx-2 font-bold text-[14px]">ورود / ثبت نام</p>
+                            </div>
+                            <!-- Login or Register Button -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!--/ End Header -->
+
+
+    <!-- Body -->
+    <div class="flex flex-col">
+
+        <!-- First section -->
+        <div class="flex flex-col items-center">
+            <p class="text-[#242424] text-center text-[45px] lg:text-[65px] !mt-3">
+                <span class="text-[#4F2C19] font-bold">قهوه</span>
+                یادت نره!
+            </p>
+
+            <p class="text-[#242424] text-center text-[17px] lg:text-[20px] !my-4 !px-4">بهترین و با کیفیت ترین قهوه ها
+                و اکسسوری ها در خانه
+                قهوه
+                چالوس
+            </p>
+
+            <a href="#itemBoxContainerBox"
+                class="w-[189px] h-[50px] rounded-full bg-[#B0A27B] flex items-center justify-center cursor-pointer mx-4 my-2">
+                <span class="!mb-0 !mx-2 font-bold text-[14px] text-[#fff]">
+                    نمایش محصولات
+                </span>
+            </a>
+
+
+            <div class="relative flex flex-col items-center">
+                <img src="images/Background.png" class="w-[340px] h-[180px] lg:w-[1250px] lg:h-[400px]">
+
+                <div
+                    class="counterBox absolute bottom-[-210px] lg:bottom-[-90px] w-[340px] h-[240px] lg:w-[1000px] lg:h-[145px] rounded-[20px] lg:rounded-full bg-[#E2DFD5] flex flex-col lg:flex-row items-center justify-between p-4">
+                    <div class="w-full lg:w-1/2 flex items-center justify-around">
+                        <div class="flex flex-col items-center">
+                            <p class="text-[#4F2C19] font-bold text-[30px] lg:text-[45px]">100+</p>
+                            <p class="text-[#3D3D3D] font-[300] text-[25px]">نوع قهوه</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <p class="text-[#4F2C19] font-bold text-[30px] lg:text-[45px]">1000+</p>
+                            <p class="text-[#3D3D3D] font-[300] text-[25px]">مشتری راضی</p>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 flex items-center justify-around">
+                        <div class="flex flex-col items-center">
+                            <p class="text-[#4F2C19] font-bold text-[30px] lg:text-[45px]">3+</p>
+                            <p class="text-[#3D3D3D] font-[300] text-[25px]">شعبه</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <p class="text-[#4F2C19] font-bold text-[30px] lg:text-[45px]">100+</p>
+                            <p class="text-[#3D3D3D] font-[300] text-[25px]">اکسسوری</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End First section -->
+
+
+        <!-- Category section -->
+        <div class="flex flex-col items-center mt-[210px] lg:mt-[140px]">
+            <!-- Coffee image -->
+            <img src="images/Group 1.png">
+
+            <!-- Title -->
+            <div class="w-full flex items-center justify-between px-4">
+                <hr class="w-[20%] lg:w-[35%] border-[#c5c6c9]">
+                <h2 class="text-[#242424] text-[15px] lg:text-[30px] font-bold">دسته بندی محصولات</h2>
+                <hr class="w-[20%] lg:w-[35%] border-[#c5c6c9]">
+            </div>
+
+            <!-- Description -->
+            <p class="text-[#3D3D3D] text-[12px] lg:text-[16px] !my-4">
+                بهترین و باکیفیت ترین برند ها ، چون شما لایق بهترین ها هستید
+            </p>
+
+            <!-- Items -->
+            <div class="w-full flex flex-col lg:flex-row items-center justify-evenly mt-2 mb-4">
+                <!-- دانه قهوه -->
+                <div
+                    class="flex items-center justify-between lg:justify-around cursor-pointer w-[80%] lg:w-[220px] lg:h-[87px] bg-[#E2DFD5] rounded-full py-2 px-4 mb-2 lg:mb-0">
+                    <div class="flex items-center">
+                        <img src="images/IMG_7604-1.png" alt="دانه قهوه" class="w-[50px] h-[50px]">
+                        <label class="font-medium text-[28px] mx-3 cursor-pointer">دانه قهوه</label>
+                    </div>
+
+
+                    <img src="images/Arrow down-left.png" class="lg:hidden">
+                </div>
+
+                <!-- پودریجات -->
+                <div
+                    class="flex items-center justify-between lg:justify-around cursor-pointer w-[80%] lg:w-[220px] lg:h-[87px] bg-[#E2DFD5] rounded-full py-2 px-4 mb-2 lg:mb-0">
+                    <div class="flex items-center">
+                        <img src="images/IMG_7600.png" alt="پودریجات" class="w-[50px] h-[50px]">
+                        <label class="font-medium text-[28px] mx-3 cursor-pointer">پودریجات</label>
+                    </div>
+
+
+                    <img src="images/Arrow down-left.png" class="lg:hidden">
+                </div>
+
+
+                <!-- دریپ بک -->
+                <div
+                    class="flex items-center justify-between lg:justify-around cursor-pointer w-[80%] lg:w-[220px] lg:h-[87px] bg-[#E2DFD5] rounded-full py-2 px-4 mb-2 lg:mb-0">
+                    <div class="flex items-center">
+                        <img src="images/IMG_7596.png" alt="دریپ بک" class="w-[50px] h-[50px]">
+                        <label class="font-medium text-[28px] mx-3 cursor-pointer">دریپ بک</label>
+                    </div>
+
+
+                    <img src="images/Arrow down-left.png" class="lg:hidden">
+                </div>
+
+
+                <!-- سیروپ -->
+                <div
+                    class="flex items-center justify-between lg:justify-around cursor-pointer w-[80%] lg:w-[220px] lg:h-[87px] bg-[#E2DFD5] rounded-full py-2 px-4 mb-2 lg:mb-0">
+                    <div class="flex items-center">
+                        <img src="images/IMG_7461.png" alt="سیروپ" class="w-[50px] h-[50px]">
+                        <label class="font-medium text-[28px] mx-3 cursor-pointer">سیروپ</label>
+                    </div>
+
+
+                    <img src="images/Arrow down-left.png" class="lg:hidden">
+                </div>
+
+
+                <!-- اکسسوری -->
+                <div
+                    class="flex items-center justify-between lg:justify-around cursor-pointer w-[80%] lg:w-[220px] lg:h-[87px] bg-[#E2DFD5] rounded-full py-2 px-4 mb-2 lg:mb-0">
+                    <div class="flex items-center">
+                        <img src="images/ideogram-2.png" alt="اکسسوری" class="w-[50px] h-[50px]">
+                        <label class="font-medium text-[28px] mx-3 cursor-pointer">اکسسوری</label>
+                    </div>
+
+
+                    <img src="images/Arrow down-left.png" class="lg:hidden">
+                </div>
+            </div>
+        </div>
+        <!-- End Category section -->
+
+
+        <!-- New Product section -->
+        <div class="flex flex-col items-center bg-[#E2DFD3] mt-24 pt-4" id="itemBoxContainerBox">
+            <!-- Coffee image -->
+            <img src="images/Group 1.png">
+
+            <!-- Title -->
+            <h2 class="text-[#4F2C19] text-[15px] lg:text-[30px] font-bold">جدیدترین محصولات</h2>
+
+            <!-- Items -->
+            <div class="w-full relative scrollable-box">
+                <button type="button"
+                    class="scroll-left hidden lg:flex scroll-btn left-[20px] absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10">
+                    ❯
+                </button>
+
+                <div class="scrollable-container w-[95%] lg:w-[90%] mx-auto cursor-grab overflow-x-scroll whitespace-nowrap scrollbar-hide grid !grid-cols-2 lg:flex gap-2 mt-4 mb-4"
+                    id="itemBoxContainer">
+                </div>
+
+                <button type="button"
+                    class="scroll-right hidden lg:flex scroll-btn right-[20px] absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10">
+                    ❮
+                </button>
+            </div>
+        </div>
+        <!-- End New Product section -->
+
+        <!-- About us -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 my-8 mx-12">
+            <div
+                class="col-span-2 flex flex-col items-center lg:items-start justify-center order-last lg:order-none mt-3 lg:mt-0">
+                <h2 class="mb-8 !text-[20px] !lg:text-[30px]"><span class="text-[#242424] font-semibold">خـــانه
+                        قـهــوه</span> چـــالوس☕</h2>
+                <p class="mb-4">
+                    با بیش از ده سال تجربه در اداره کافه‌ها و رستوران‌ها، و پنج سال سابقه در عرصه‌ی آموزش و تولید و فروش
+                    قهوه، ما در زمینه‌ی خدمات قهوه به شما اطمینان می‌دهیم. تخصص ما در ترکیب بی‌نظیر علم قهوه با تجربه
+                    رستورانی، تجربه‌ی بی‌نظیری را برای شما ایجاد خواهیم کرد.
+                </p>
+                <button
+                    class="w-[189px] h-[50px] rounded-full bg-[#B0A27B] flex items-center justify-center cursor-pointer mx-4 my-2">
+                    <span class="!mb-0 !mx-2 font-bold text-[14px] text-[#fff]">
+                        دربــاره مــا
+                    </span>
+                </button>
+            </div>
+
+            <div>
+                <div class="w-[260px] lg:w-[285px] lg:h-[490px] rounded-full border-2 border-[#000] p-2">
+                    <img src="images/essperssomaker.png" alt="اسپرسوساز" class="rounded-full">
+                </div>
+            </div>
+        </div>
+        <!-- End About us -->
+
+        <!-- Discount Product section -->
+        <div class="flex flex-col items-center bg-[#E2DFD3] mt-24 pt-4">
+            <!-- Coffee image -->
+            <img src="images/Group 1.png">
+
+            <!-- Title -->
+            <h2 class="text-[#4F2C19] text-[15px] lg:text-[30px] font-bold">تخفیفدار ها</h2>
+
+            <!-- Items -->
+            <div class="w-full relative scrollable-box">
+                <button type="button"
+                    class="scroll-left hidden lg:flex scroll-btn left-[20px] absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10">
+                    ❯
+                </button>
+
+                <div class="scrollable-container w-[95%] lg:w-[90%] mx-auto cursor-grab overflow-x-scroll whitespace-nowrap scrollbar-hide grid !grid-cols-2 lg:flex gap-2 mt-4 mb-4"
+                    id="itemBoxDiscountContainer">
+                </div>
+
+                <button type="button"
+                    class="scroll-right hidden lg:flex scroll-btn right-[20px] absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10">
+                    ❮
+                </button>
+            </div>
+        </div>
+        <!-- End Discount Product section -->
+
+
+        <!-- Contact section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 m-8">
+
+            <!-- phone -->
+            <div class="flex items-center">
+                <div class="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-[#B0A27B] ml-3">
+                    <img src="images/phone.png" class="w-[25px] h-[25px]">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-[19px] font-semibold">تلفن تماس</label>
+                    <span class="text-[16px]">09121234567</span>
+                </div>
+            </div>
+
+            <!-- map -->
+            <div class="flex items-center">
+                <div class="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-[#B0A27B] ml-3">
+                    <img src="images/map.png" class="w-[25px] h-[25px]">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-[19px] font-semibold">آدرس</label>
+                    <span class="text-[16px]">جاده چالوس٫ رشت٫ رادیو دریا2</span>
+                </div>
+            </div>
+
+            <!-- timer -->
+            <div class="flex items-center">
+                <div class="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-[#B0A27B] ml-3">
+                    <img src="images/timer.png" class="w-[25px] h-[25px]">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-[19px] font-semibold">ساعت کاری:</label>
+                    <span class="text-[16px]">8 صبح الی 11 شب</span>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact section -->
+
+        <!-- Footer section -->
+        <div class="flex flex-col bg-[#333333]">
+            <div class="grid grid-cols-1 lg:grid-cols-3 items-center justify-items-center gap-2 p-8">
+                <div>
+                    <img src="images/logo-white.png" alt="خانه قهوه" class="w-[190px] h-[45px]">
+                </div>
+                <div>
+                    <img src="images/Enamad.png.png">
+                </div>
+                <div class="flex items-center justify-evenly w-full lg:w-[50%]">
+                    <div
+                        class="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#434343] cursor-pointer">
+                        <img src="images/whatesapp.png" class="w-[20px] h-[20px]">
+                    </div>
+                    <div
+                        class="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#434343] cursor-pointer">
+                        <img src="images/telegram.png" class="w-[20px] h-[20px]">
+                    </div>
+                    <div
+                        class="w-[45px] h-[45px] rounded-full flex items-center justify-center bg-[#434343] cursor-pointer">
+                        <img src="images/instagram.png" class="w-[20px] h-[20px]">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full py-3">
+                <p class="text-white text-center">تمام حقوق این سایت متعلق به خانه قهوه چالوس میباشد</p>
+            </div>
+        </div>
+        <!-- End Footer section -->
+
+    </div>
+    <!-- End Body -->
+
+
+    <!-- Modal Section -->
+
+    <!-- AddedCart -->
+    <div id="popupAddedCart"
+        class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-[1521]">
+        <div class="bg-white rounded-lg shadow-lg max-w-sm w-full">
+            <div class="flex justify-between items-center px-2 py-4 bg-[#F6F5F0] rounded-t-lg">
+                <h3 class="text-پی font-semibold text-[#4F2C19]">محصول به سبد خرید اضافه شد</h3>
+                <button id="popupCloseButton" class="text-gray-500 hover:text-gray-700 mx-4">&times;</button>
+            </div>
+            <div id="popupBody" class="flex items-center gap-4 p-6"></div>
+        </div>
+    </div>
+    <!-- End AddedCart -->
+
+    <!-- Product View -->
+    <div class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50"
+        id="productView">
+        <div class="bg-white rounded-lg shadow-lg max-w-5xl w-[90%]">
+            <!-- Modal Header -->
+            <div class="flex justify-end p-4 border-b border-gray-200">
+                <button type="button" class="text-gray-500 hover:text-gray-800" onclick="closeModalProductView()">
+                    <span class="text-xl">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="popupProductViewBody"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Product View -->
+
+    <!-- End Modal Section -->
+
+    <div class="toast-overlay" id="toast-overlay"></div>
+    <!-- JS -->
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/scroll-box.js"></script>
+</body>
+
+</html>
